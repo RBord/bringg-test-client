@@ -28,7 +28,7 @@ export default function PlanetsPage(){
             e.preventDefault()
             setPlanetsId(e.target.elements.planetsId.value)
             if(e.target.elements.encoding.checked === true){
-                setNeedEncode('encoding=ewot')
+                setNeedEncode('?encoding=ewot')
             } else {
                 setNeedEncode('')
             }

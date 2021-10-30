@@ -15,21 +15,22 @@ export default function PeoplePage(){
                 swAPI.fetchPeopleById(peopleId, needEncode).then(setJson)
                 
             } catch (error) {
-                console.log(error.message)
+                console.log(error)
             }
         }
         getPeopleById()
     },[peopleId, needEncode])
 
     const entries = Object.entries(json)
-    
+
+
     return (
         <>
         <form onSubmit={e => {
             e.preventDefault()
             setPeopleId(e.target.elements.peopleId.value)
             if(e.target.elements.encoding.checked === true){
-                setNeedEncode('encoding=ewot')
+                setNeedEncode('?encoding=ewot')
             } else {
                 setNeedEncode('')
             }
@@ -46,9 +47,10 @@ export default function PeoplePage(){
 
         {json && (
             <ul>
-                {entries.map(([key, value]) =>{
+                {entries.map(([k, value]) =>{
+                    
                     return (
-                        <li key={v4()}><b>{key}</b>:  {value}</li>
+                        <li key={v4()}><b>{k}</b>: {value}</li>
                     )
                 })}
             </ul>)
