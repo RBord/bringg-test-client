@@ -2,19 +2,23 @@ import {useState, useEffect} from "react";
 import s from './PlanetsPage.module.css'
 import {v4} from 'uuid'
 import * as swAPI from '../../services/swapi'
+import Spinner from "../../components/Loader/Loader";
 
 export default function PlanetsPage(){
     const [planetsId, setPlanetsId] = useState('')
     const [json, setJson] = useState({})
     const [needEncode, setNeedEncode] = useState('')
+    const [loading, setLoading] = useState(false)
 
     useEffect(()=>{
         if(planetsId === '') return
+        setLoading(true)
         async function getPlanetsById(){
             try {
-                swAPI.fetchPlanetsById(planetsId, needEncode).then(setJson)
+                await swAPI.fetchPlanetsById(planetsId, needEncode).then(setJson)
+                setLoading(false)
             } catch (error) {
-                console.log(error.message)
+                console.log(error)
             }
         }
         getPlanetsById()
@@ -41,8 +45,13 @@ export default function PlanetsPage(){
             <label htmlFor='encoding'>Encoding to Ewok</label>
         </form>
         <hr/>
-
-        {json && (
+        {loading && <Spinner/>}
+        {!planetsId && (
+            <div>
+                <p>Please input value from 1 to 60 for find Planet</p>
+            </div>
+        )}
+        {json && !loading && planetsId && (
             <ul>
                 {entries.map(([key, value]) =>{
                     return (
