@@ -1,0 +1,2 @@
+(this.webpackJsonpclient=this.webpackJsonpclient||[]).push([[6],{69:function(n,t,r){"use strict";r.r(t),r.d(t,"default",(function(){return c}));r(0);var e=r(1);function c(){return Object(e.jsx)("h1",{children:"Find your hero from StarWars!"})}}}]);
+//# sourceMappingURL=6.3e16a4ea.chunk.js.map

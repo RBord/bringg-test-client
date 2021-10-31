@@ -1,0 +1,1 @@
+{"version":3,"sources":["views/HomePageView/HomePage.jsx"],"names":["HomePage"],"mappings":"iGAAA,+DAEe,SAASA,IACpB,OACI","file":"static/js/6.3e16a4ea.chunk.js","sourcesContent":["import React from \"react\";\n\nexport default function HomePage(){\n    return (\n        <h1>Find your hero from StarWars!</h1>\n    )\n}"],"sourceRoot":""}
